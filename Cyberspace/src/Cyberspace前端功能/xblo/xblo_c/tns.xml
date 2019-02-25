@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tns>
+	<driver>oracle.jdbc.driver.OracleDriver</driver>
+	<url>jdbc:oracle:thin:@192.168.1.168:1521:orcl</url>
+	<username>scott</username>
+	<password>x</password>
+</tns>

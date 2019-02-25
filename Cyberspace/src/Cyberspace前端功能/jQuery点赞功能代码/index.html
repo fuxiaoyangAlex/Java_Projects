@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head> 
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+        <title>jQuery点“喜欢”功能</title>
+        <meta name="keywords" content="jQuery喜欢,Ajax喜欢" />
+        <meta name="description" content="有朋友问我美丽说的“我喜欢”功能功能是如何实现的，当用户看到自己喜欢的图片或文章时，点击“红心”按钮，能够记录点击数。" />
+        <link rel="stylesheet" type="text/css" href="css/common.css" />
+        <style type="text/css">
+            .clear{clear:both}
+            .list{width:760px; margin:20px auto}
+            .list li{float:left; margin:10px; position:relative}
+            .list li img{width:226px; height:317px;}
+            .list li p{position:absolute; top:0; left:0; width:226px; height:24px; line-height:24px; background:#000; opacity:.8;filter:alpha(opacity=80);}
+            .list li p a{padding-left:30px; height:24px; background:url(images/heart.png) no-repeat 4px -1px;color:#fff; font-weight:bold; font-size:14px}
+            .list li p a:hover{background-position:4px -25px;text-decoration:none}
+        </style>
+    </head>
+    <body>
+        <div class="container" id="main">
+            <h2 class="title">jQuery点赞功能代码</h2>
+            <div class="demo">
+                <ul class="list clearfix">
+                    <li>
+                        <img alt="纯棉嘴唇珠片T恤短裙套装" src="images/7ac0f1e25ff4fb3a23500d32adc6_640_842.cc.jpg_55fc1588_s1_q0_150_5_0_226_800.jpg"/>
+                        <p>
+                            <a class="likes"  title="我喜欢" href="#">2100</a>
+                        </p>
+                    </li>
+                    <li>
+                        <img alt="【成名夜】九分休闲裤" src="images/0f3def1ca6a115537dccb180a3a9_640_832.cf.jpg_2ab460b9_s1_q0_150_5_0_226_800.jpg"/>
+                        <p>
+                            <a class="likes"  title="我喜欢" href="#">716</a>
+                        </p>
+                    </li>
+                    <li>
+                        <img alt="立体数码印花网纱女短卫衣" src="images/7ac0f1e25ff4fb3a23500d32adc6_640_842.cc.jpg_55fc1588_s1_q0_150_5_0_226_800.jpg"/>
+                        <p>
+                            <a class="likes"  title="我喜欢" href="#">3724</a>
+                        </p>
+                    </li>
+                </ul>
+            </div>  
+        </div>
+        <div class="foot">
+            Powered by <a href="http://www.mycodes.net/" target="_blank">源码之家</a>
+        </div>
+ <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript">
+            $(function() {
+                $(".likes").click(function() {
+                    var obj = $(this);
+                    obj.fadeOut(300);
+                    //以下通过ajax成功返回
+                    var num = parseInt(obj.text());
+                    obj.text(num + 1).fadeIn(300);
+                });
+            });
+        </script>
+    </body>
+</html>
+

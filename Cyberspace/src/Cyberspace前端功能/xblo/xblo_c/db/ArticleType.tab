@@ -1,0 +1,6 @@
+DROP TABLE ArticleType;
+CREATE TABLE ArticleType(
+	articleTypeId NUMBER,
+	articleTypeName VARCHAR2(20),
+	articleTypeDesc VARCHAR2(200)
+);

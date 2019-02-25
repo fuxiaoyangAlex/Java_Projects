@@ -1,0 +1,11 @@
+DROP TABLE Article;
+CREATE TABLE Article(
+articleId NUMBER,
+articleTypeId NUMBER,
+articleTitle VARCHAR2(200),
+articleSummary VARCHAR2(400),
+articleContent VARCHAR2(2000),
+createDate DATE,
+visitCount NUMBER,
+createUserId NUMBER
+);

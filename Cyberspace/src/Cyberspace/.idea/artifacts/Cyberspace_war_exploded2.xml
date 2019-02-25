@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="Cyberspace:war exploded2">
+    <output-path>$PROJECT_DIR$/out/artifacts/Cyberspace_war_exploded2</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="Cyberspace" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="Cyberspace/web/Web" />
+    </root>
+  </artifact>
+</component>

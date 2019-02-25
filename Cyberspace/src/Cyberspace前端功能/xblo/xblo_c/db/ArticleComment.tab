@@ -1,0 +1,9 @@
+DROP TABLE ArticleComment;
+CREATE TABLE ArticleComment(
+	articleCommentId NUMBER,
+	articleId NUMBER,
+	articleCommentDate date,
+	articleCommentUser varchar2(200),
+	articleCommentEmail varchar2(200),
+	articleCommentContent VARCHAR2(2000)
+);

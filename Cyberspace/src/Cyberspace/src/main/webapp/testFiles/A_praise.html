@@ -1,0 +1,70 @@
+﻿<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Twitter红心点赞动画效果代码</title>
+
+<link rel="stylesheet" type="text/css" href="../css/praise_style.css" />
+
+</head>
+<body>
+
+<article class="htmleaf-container">
+	<div id="container">
+		<h3>点击下面的红心查看效果！</h3>
+
+		<div class="feed" id="feed1">
+		<p>W3C </p>
+		<!--<div class="heart " id="like1" rel="like"></div> <div class="likeCount" id="likeCount1">14</div>-->
+		</div>
+
+		<!--<div class="feed" id="feed2">-->
+		<!--<p>百度一下</p>-->
+		<!--<div class="heart" id="like2" rel="like"></div> <div class="likeCount" id="likeCount2">10</div>-->
+		<!--</div>-->
+
+	</div>
+	<hr color="red"/>
+	<div class="heart " id="like2" rel="like" align="right"></div> <div class="likeCount" id="likeCount1">14</div>
+
+
+</article>
+
+<script src="../Bootstrap/jquery/jquery-3.3.1.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+	$('body').on("click",'.heart',function(){
+
+		var A=$(this).attr("id");
+		alert("A: " + A); //获取A
+		var B=A.split("like"); //截取A成为数组
+		alert("B: " + B);
+		var messageID=B[1]; //获取B（1）
+		alert( "messageID= " + messageID);
+		var C=parseInt($("#likeCount"+messageID).html());
+		alert("C: " + C);
+		$(this).css("background-position","");
+		var D=$(this).attr("rel");
+		alert("D:------> " + D);
+		if(D === 'like') {      
+			$("#likeCount"+messageID).html(C+1);
+			$(this).addClass("heartAnimation").attr("rel","unlike");
+			alert("Love喜欢....................................");
+		}
+		else{
+			$("#likeCount"+messageID).html(C-1);
+			$(this).removeClass("heartAnimation").attr("rel","like");
+			$(this).css("background-position","left");
+            alert("不喜欢....................................");
+		}
+	});
+
+});
+</script>
+
+</body>
+</html>

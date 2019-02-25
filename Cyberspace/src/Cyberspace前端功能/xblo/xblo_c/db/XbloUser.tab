@@ -1,0 +1,6 @@
+DROP TABLE XbloUser;
+CREATE TABLE XbloUser(
+xbloUserId NUMBER,
+xbloUsername VARCHAR2(200),
+xbloPassword VARCHAR2(200)
+);

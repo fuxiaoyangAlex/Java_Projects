@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with<servlet>
+      <servlet-name>default</servlet-name>
+      <servlet-class>org.apache.catalina.servlets.DefaultServlet</servlet-class>
+      <init-param>
+          <param-name>debug</param-name>
+          <param-value>0</param-value>
+      </init-param>
+      <init-param>
+          <param-name>listings</param-name>
+          <param-value>true</param-value>
+      </init-param>
+      <load-on-startup>1</load-on-startup>
+  </servlet>
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+                      http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+  version="4.0"
+  metadata-complete="true">
+  <Connector URIEncoding="UTF-8" />
+  <display-name>Welcome to FlowingSun’s blog！</display-name>
+  <description>
+        欢迎进入阳光流淌的个人博客
+  </description>
+
+
+  <servlet>
+  <servlet-name>homeServlet</servlet-name>
+  <servlet-class>
+      blog.flowingsun.servlet.HomeServlet
+  </servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>homeServlet</servlet-name>
+      <url-pattern>/HomeServlet</url-pattern>
+  </servlet-mapping>
+
+
+  <servlet>
+  <servlet-name>adminhomeServlet</servlet-name>
+  <servlet-class>
+      blog.flowingsun.servlet.AdminhomeServlet
+  </servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>adminhomeServlet</servlet-name>
+      <url-pattern>/Adminhome</url-pattern>
+  </servlet-mapping>
+
+  <filter>
+      <filter-name>encodingFilter</filter-name>
+      <filter-class>blog.flowingsun.filter.EncodingFilter</filter-class>
+  </filter>
+  <filter-mapping>
+        <filter-name>encodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <filter>
+      <filter-name>backServletFilter</filter-name>
+      <filter-class>blog.flowingsun.filter.BackServletFilter</filter-class>
+  </filter>
+  <filter-mapping>
+      <filter-name>backServletFilter</filter-name>
+      <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <filter>
+      <filter-name>foreLoginFilter</filter-name>
+      <filter-class>blog.flowingsun.filter.ForeLoginFilter</filter-class>
+  </filter>
+  <filter-mapping>
+      <filter-name>foreLoginFilter</filter-name>
+      <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <filter>
+      <filter-name>foreServletFilter</filter-name>
+      <filter-class>blog.flowingsun.filter.ForeServletFilter</filter-class>
+  </filter>
+  <filter-mapping>
+      <filter-name>foreServletFilter</filter-name>
+      <dispatcher>FORWARD</dispatcher>
+      <dispatcher>REQUEST</dispatcher>
+      <url-pattern>/*</url-pattern>
+  </filter-mapping>
+</web-app>

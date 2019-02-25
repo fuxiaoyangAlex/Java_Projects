@@ -1,0 +1,11 @@
+@Article.tab		;
+@Article_S1.seq         ;
+@ArticleType.tab        ;
+@ArticleType_S1.seq     ;
+@ArticleComment.tab     ;
+@ArticleComment_S1.seq  ;
+@XbloUser.tab           ;
+@XbloUser_S1.seq	;
+@XBloLink.tab           ;
+@XBloLink_S1.seq        ;
+@XbloUserInit.sql	;

@@ -1,0 +1,6 @@
+DROP TABLE XBloLink;
+CREATE TABLE XBloLink(
+xbloLinkid NUMBER,
+xbloLinkname VARCHAR2(200),
+xbloLinkurl VARCHAR2(200)
+);
