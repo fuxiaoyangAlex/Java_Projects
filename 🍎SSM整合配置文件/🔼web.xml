@@ -4,6 +4,12 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
+    <display-name>CloudDemo</display-name>
+    <!-- 欢迎首页 -->
+    <welcome-file-list>
+        <welcome-file>/index.jsp</welcome-file>
+    </welcome-file-list>
+
     <!-- 配置加载Spring文件监听器 -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
@@ -49,4 +55,16 @@
         <!-- / : 拦截所有请求（处理jsp）-->
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+
+    <!--静态资源处理，默认不拦截-->
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.js</url-pattern>
+        <url-pattern>*.css</url-pattern>
+        <url-pattern>/assets/*</url-pattern>
+    </servlet-mapping>
+
+
+
 </web-app>
+
