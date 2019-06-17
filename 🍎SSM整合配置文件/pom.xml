@@ -310,3 +310,15 @@ POM.XML
       </dependency>
 
   </dependencies>
+
+<!-- 加载最后 -->
+      <!-- 加载资源 -->
+      <resources>
+          <resource>
+              <directory>src/main/java</directory>
+              <includes>
+                  <include>**/*.xml</include>
+              </includes>
+              <filtering>true</filtering>
+          </resource>
+      </resources>
