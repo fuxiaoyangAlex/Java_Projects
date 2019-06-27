@@ -16,10 +16,14 @@
 * **项目名称：** **CloudDemo**
 
 * **前端技术框架**:
-> **LayUI、jQuery、Ajax、UEditor、Echarts、Bootstrap、H-ui**
+> **Layui、jQuery、Ajax、UEditor、Echarts、Bootstrap、H-ui**
 
 * **后端技术**：
 > **Spring、Spring MVC、MyBatis**
+
+* **解决技术点**
+
+> 1.手机验证 2.Layui 信息流使用、3.Excel数据导出 4. 前台系统采用jsp后台系统采用前后端分离
 
 * **借鉴项目**: https://github.com/SkyYongFly/YunZhi
 <hr/>
@@ -31,7 +35,7 @@
 <img src="https://s2.ax1x.com/2019/06/27/ZnfvdO.png" alt="ZnfvdO.png" border="0" />
 
 
-### CloudDemo系统界面原型设计
+### <a href='https://github.com/Sunshineisbright/Java_Projects/blob/master/CloudDemo/CloudDemo%E7%B3%BB%E7%BB%9F%E7%95%8C%E9%9D%A2%E5%8E%9F%E5%9E%8B%E8%AE%BE%E8%AE%A1.md'>CloudDemo界面原型设计</a>
 
 
 
