@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.niit.clouddemo.dao.AnswerDao">
+
+    <select id="getAnswerInfoandUserInfoByQID" parameterType="String" resultMap="AnswerInfoWithUserInfoMap">
+        SELECT a.content, a.createtime, a.hotstar,
+        u.user_id, u.username, u.signature, u.headimg
+        FROM cd_answer a, cd_user u
+        WHERE a.user_id = u.user_id
+        AND a.question_id LIKE CONCAT ('%',#{qid},'%');
+    </select>
+
+    <resultMap id="AnswerInfoWithUserInfoMap" type="com.niit.clouddemo.pojo.vo.AnswerInfoWithUserInfo">
+        <result property="content" javaType="String" column="content"/>
+        <result property="createtime" javaType="java.sql.Timestamp" column="createtime"/>
+        <result property="hotstar" javaType="Integer" column="hotstar"/>
+        <result property="userid" javaType="String" column="userid"/>
+        <result property="username" javaType="String" column="username"/>
+        <result property="signature" javaType="String" column="signature"/>
+        <result property="headimg" javaType="String" column="headimg"/>
+    </resultMap>
+
+
+
+
+    <insert id="addAnswer" parameterType="com.niit.clouddemo.pojo.front.Answer">
+        INSERT INTO cd_answer(content, createtime, question_id, user_id)
+        VALUES(#{content},#{createtime},#{questionId},#{userid})
+    </insert>
+
+</mapper>

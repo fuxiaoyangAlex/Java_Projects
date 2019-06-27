@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+   </head>
+   <body style="height: 100%; margin: 0">
+       <div id="container" style="height: 100%"></div>
+       <script type="text/javascript" src="js/echarts.min.js" charset="UTF-8"></script>
+       <script type="text/javascript" src="js/shine.js" charset="UTF-8"></script>
+
+       <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom,'westeros');
+var app = {};
+option = null;
+option = {
+    title : {
+        text: '问题标签分类',
+        subtext: '',
+        x:'center'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        x : 'center',
+        y : 'bottom',
+        data:['办公效率','软件开发','计算机硬件','学习生活','精神洗涤','娱乐生活','人生理财','软件开发']
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {
+                show: true,
+                type: ['pie', 'funnel']
+            },
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    series : [
+        {
+            name:'面积模式',
+            type:'pie',
+            radius : [30, 110],
+            left : ['20%', '50%'],
+            roseType : 'area',
+            data:[
+                {value:10, name:'办公效率'},
+                {value:5, name:'软件开发'},
+                {value:15, name:'计算机硬件'},
+                {value:25, name:'学习生活'},
+                {value:100, name:'精神洗涤'},
+                {value:35, name:'娱乐生活'},
+                {value:30, name:'人生理财'},
+                {value:40, name:'软件开发'}
+            ]
+        }
+    ]
+};
+;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+       </script>
+   </body>
+</html>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.niit.clouddemo.dao.AdminDao">
+
+
+    <!-- 获取管理员所有信息 -->
+    <select id="getAdminInfoByPhone" parameterType="String" resultType="com.niit.clouddemo.pojo.background.Admin">
+        SELECT *
+        FROM sys_admin
+        WHERE phone = #{phone}
+    </select>
+
+
+
+    <!-- 登录检查 -->
+    <select id="adminLoginValidate" parameterType="String" resultType="com.niit.clouddemo.pojo.background.Admin">
+        SELECT *
+        FROM sys_admin
+        WHERE phone = #{adminphone}
+    </select>
+
+<!--    <resultMap id="adminLoginValidateMap" type="com.niit.clouddemo.pojo.background.Admin">-->
+<!--        <id property="adminid" column="adminid"/>-->
+<!--        <result property="headimg" column="headimg"/>-->
+<!--        <result property="password" column="password"/>-->
+<!--        <result property="email" column="name"/>-->
+<!--        <result property="phone" column="phone"/>-->
+<!--        <result property="qq" column="qq"/>-->
+<!--        <result property="address" column="address"/>-->
+<!--        <result property="createtime" column="createtime"/>-->
+<!--        <result property="updatetime" column="updatetime"/>-->
+<!--        <result property="gender" column="gender"/>-->
+<!--        <result property="adminflag" column="adminflag"/>-->
+<!--    </resultMap>-->
+</mapper>
+
+
+
+<!--        private Integer adminid;-->
+<!--        private String  headimg;-->
+<!--        private String  password;-->
+<!--        private String name;-->
+<!--        private String email;-->
+<!--        private String phone;-->
+<!--        private String qq;-->
+<!--        private String address;-->
+<!--        private String createtime;-->
+<!--        private String updatetime;-->
+<!--        private String gender;-->
+<!--        private Integer adminflag;-->

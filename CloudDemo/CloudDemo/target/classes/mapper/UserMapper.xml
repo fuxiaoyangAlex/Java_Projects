@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--需要定义命名空间，值为对应的Mapper接口完全限定名-->
+<mapper namespace="com.niit.clouddemo.dao.UserDao">
+
+    <!-- 获取所有用户信息 -->
+    <select id="getAllUsersInfo" resultMap="AllUsersInfoMap">
+        SELECT *
+        FROM cd_user
+        WHERE lockedflag = 0
+    </select>
+
+    <resultMap id="AllUsersInfoMap" type="com.niit.clouddemo.pojo.front.User">
+        <id property="userid" column="user_id"/>
+        <result property="phone" column="phone"/>
+        <result property="username" column="username"/>
+        <result property="email" column="email"/>
+        <result property="signature" column="signature"/>
+        <result property="headimg" column="headimg"/>
+        <result property="gender" column="gender"/>
+        <result property="createtime" column="createtime"/>
+        <result property="updatetime" column="updatetime"/>
+        <result property="lockedflag" column="lockedflag"/>
+    </resultMap>
+    <!-- 统计用户的人数 -->
+    <select id="countUsersNum" resultType="Integer">
+        SELECT COUNT(*)
+        FROM cd_user;
+    </select>
+
+    <!-- 根据用户ID获取用户信息 -->
+    <select id="getUserInfoById" parameterType="String" resultType="com.niit.clouddemo.pojo.front.User">
+        SELECT *
+        FROM cd_user
+        WHERE user_id = #{userId}
+    </select>
+
+    <!--
+        根据手机号码获取用户信息
+    -->
+    <select id="getUserByPhone" parameterType="String" resultMap="UserResultMapWithPhoneMap">
+        SELECT *
+        FROM cd_user
+        WHERE phone = #{phone}
+    </select>
+
+    <resultMap id="UserResultMapWithPhoneMap" type="com.niit.clouddemo.pojo.front.User">
+        <id property="userid" column="user_id"/>
+        <result property="phone" column="phone"/>
+        <result property="username" column="username"/>
+        <result property="email" column="email"/>
+        <result property="signature" column="signature"/>
+        <result property="headimg" column="headimg"/>
+        <result property="gender" column="gender"/>
+        <result property="createtime" column="createtime"/>
+    </resultMap>
+
+    <!--
+        添加新用户用户名称
+        用户UID
+        用户手机号
+        用户密码
+        用户名称
+        创建时间
+        更新时间
+        用户状态
+    -->
+    <insert id="addUser" parameterType="com.niit.clouddemo.pojo.front.User">
+
+        INSERT INTO cd_user
+
+            (user_id, phone, password, username,createtime, updatetime, lockedflag)
+
+        VALUES
+
+            (#{userid}, #{phone},#{password}, #{username}, #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, #{lockedflag})
+
+    </insert>
+
+</mapper>
+
+

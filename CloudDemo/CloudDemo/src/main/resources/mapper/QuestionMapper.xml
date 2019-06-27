@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.niit.clouddemo.dao.QuestionDao">
+
+    <!-- 添加新问题 【问题的提出用户uid、问题的qid、问题的标题、问题的描述、问题的标签、问题提出的时间】-->
+    <insert id="addNewQuestion" parameterType="com.niit.clouddemo.pojo.front.Question">
+        INSERT INTO cd_question(question_id,title,`desc`,tag,createtime,user_id)
+        VALUES (#{questionId}, #{title}, #{desc}, #{tag}, #{createtime}, #{userId})
+    </insert>
+    <!-- 获取问题详情以及所对应问题的提出者信息 -->
+    <select id="getQuestionDetail" parameterType="String" resultMap="QuestionDetailMap">
+        SELECT q.question_id,q.title,q.desc,q.createtime,q.hotindex,q.tag,
+               u.user_id,u.username,u.signature,u.headimg
+        FROM cd_question q, cd_user u
+        WHERE q.user_id = u.user_id
+        AND q.question_id LIKE CONCAT ('%' ,#{questionid},'%');
+    </select>
+
+    <resultMap id="QuestionDetailMap" type="com.niit.clouddemo.pojo.vo.QuestionDetail">
+        <result property="questionid" javaType="String" column="question_id"/>
+        <result property="title" javaType="String" column="title"/>
+        <result property="desc" javaType="String" column="desc"/>
+        <result property="createtime" javaType="java.util.Date" column="createtime"/>
+        <result property="hotindex" javaType="Integer" column="hotindex"/>
+        <result property="tag" javaType="String" column="tag"/>
+        <result property="userid" javaType="String" column="userid"/>
+        <result property="username" javaType="String" column="username"/>
+        <result property="signature" javaType="String" column="signature"/>
+        <result property="headimg" javaType="String" column="headimg"/>
+    </resultMap>
+    <!-- 获取选取回答问题的所有不同的个数 -->
+    <select id="getDistinctQuestionNumFromAnswer" resultType="Integer">
+        SELECT COUNT(DISTINCT question_id)
+        FROM cd_answer;
+    </select>
+
+    <!-- 通过时间排序获取所有问题-->
+    <select id="getAllQuestionByTime">
+        SELECT *
+        FROM cd_question
+        ORDER BY createtime DESC
+    </select>
+
+    <!-- TODO: 三表查询 每次查询5个问题以及相对应的优秀回答 pageIndex:当前索引 pageSize: 每次加载的数据条数-->
+    <select id="getNumQuestionAndUserWithBestAnswerAndUser" parameterType="com.niit.clouddemo.pojo.front.PageInfo" resultMap="NumQuestionAndUserWithBestAnswerAndUserMap">
+        SELECT q.title, q.question_id,a.content,a.answer_id,max(hotstar) hotstar,u.username,u.headimg,u.signature,u.user_id
+        FROM cd_question q, cd_answer a, cd_user u
+        WHERE q.question_id = a.question_id AND a.user_id = u.user_id
+        GROUP BY a.question_id
+        ORDER BY q.createtime DESC
+        LIMIT ${pageIndex}, ${pageSize}
+    </select>
+
+    <resultMap id="NumQuestionAndUserWithBestAnswerAndUserMap" type="com.niit.clouddemo.pojo.vo.NumQuestionAndUserWithBestAnswerAndUserMap">
+        <id property="questionId" column="question_id"/>
+            <result property="title" javaType="String" column="title"/>
+        <!-- 一对一 一个问题对应一个最优回答 -->
+            <result property="answerId" javaType="Integer" column="answer_id"/>
+            <result property="content" javaType="String" column="content"/>
+            <result property="hotstar" javaType="Integer" column="hotstar"/>
+            <result property="userId" javaType="String" column="user_id"/>
+            <result property="username" javaType="String" column="username"/>
+            <result property="headimg" javaType="String" column="headimg"/>
+            <result property="signature" javaType="String" column="signature"/>
+    </resultMap>
+
+
+<!--    &lt;!&ndash;三表查询: 根据问题的QID查询所有相应的回答以及所属的用户信息&ndash;&gt;-->
+<!--    <select id="getQuestionDetailsByQIDAndUID" parameterType="Integer" resultMap="QuestionWithAnswersResult">-->
+<!--        SELECT q.*,a.*,u.*-->
+<!--        FROM cd_question q, cd_answer a, cd_user u-->
+<!--        WHERE q.question_id = a.question_id-->
+<!--        AND a.user_id = u.user_id-->
+<!--         AND q.question_id = #{questionId};-->
+<!--    </select>-->
+
+<!--    <insert id="addNewQuestion" parameterType="com.niit.clouddemo.pojo.front.Question">-->
+
+<!--        INSERT INTO cd_question(question_id, title, `desc`, createtime, tag, user_id)-->
+<!--        VALUES (#{questionId},#{title},#{desc},#{createtime},#{tag},#{userId})-->
+
+
+<!--    </insert>-->
+
+
+<!--    <resultMap id="QuestionWithAnswersResult" type="com.niit.clouddemo.pojo.front.Question">-->
+<!--        <id property="questionId" column="question_id"/>-->
+<!--        <result property="title" column="title"/>-->
+<!--        <result property="desc" column="desc"/>-->
+<!--        <result property="createtime" column="createtime"/>-->
+<!--        <result property="hotIndex" column="hotindex"/>-->
+<!--        <result property="tag" column="tag"/>-->
+<!--        <collection property="answerList" ofType="com.niit.clouddemo.pojo.front.Answer">-->
+<!--            <id property="answerId" column="answer_id"/>-->
+<!--            <result property="content" column="content"/>-->
+<!--            <result property="createtime" column="createtime"/>-->
+<!--            <result property="hotStar" column="hotstar"/>-->
+<!--            <association property="user" column="com.niit.clouddemo.pojo.front.User">-->
+<!--                <id property="userid" column="user_id"/>-->
+<!--                <result property="username" column="username"/>-->
+<!--                <result property="signature" column="signature"/>-->
+<!--                <result property="headimg" column="headimg"/>-->
+<!--            </association>-->
+<!--        </collection>-->
+<!--    </resultMap>-->
+</mapper>

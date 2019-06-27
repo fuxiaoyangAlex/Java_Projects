@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>后台管理</title>
+<link href="../backgroundresources/css/login.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="../backgroundresources/images/bitbug_favicon.ico" />
+    <link rel="stylesheet" href="../backgroundresources/Widget/layui/css/layui.css"/>
+    <link rel="stylesheet" href="../backgroundresources/assets/css/style.css"/>
+    <script src="../backgroundresources/assets/js/jquery-2.0.3.min.js"></script>
+    <script src="../backgroundresources/Widget/layui/layui.all.js"></script>
+    <link rel="stylesheet" href="../backgroundresources/assets/css/admin_login.css"/>
+</head>
+
+<body >
+<div class="login_box">
+      <div class="login_l_img"><img src="../frontresources/assets/images/login-img.png" /></div>
+      <div class="login">
+          <div class="login_logo"><a href="#"><img src="../backgroundresources/images/adminheaddefault.jpg" /></a></div>
+          <div class="login_name">
+               <p>CloudDemo后台管理系统</p>
+          </div>
+
+              <input id="adminphone" type="text"  placeholder="手机号码" >
+              <input id="adminpassword" type="password" placeholder="密码">
+              <input value="登录" style="width:100%;display: none " type="submit"   >
+                <button type="button" onclick="login()" style="width:100%; " class="layui-btn layui-btn-radius layui-btn-normal">登录</button>
+      </div>
+      <div class="copyright">CloudDemo 版权所有©2019-2019 小组成员：<font color="#1e90ff"><b>[👨‍💻付晓阳 👨‍💻丁建阳 👨‍💻王寒 👨‍💻何靖 👨‍💻孙龙阁 👨‍💻王壮壮]</b></font>　</div>
+</div>
+<div style="text-align:center;">
+</div>
+
+<form id="form" method="post" action="">
+</form>
+<script type="text/javascript">
+    //用户登录
+    function login() {
+
+        //手机号验证
+        var phone = $("#adminphone").val();
+        var password = $("#adminpassword").val();
+        console.log("adminphone: " + phone + "adminpassword: " + password);
+            $.ajax({
+                url:  "http://localhost:8080/CloudDemo/sys/adminLoginValidate.action",
+                type: "POST",
+                data: JSON.stringify({"adminpassword":password, "adminphone":phone}),
+                contentType:"application/json",
+                dataType: "json",
+                success:function (data) {
+                    layer.msg(data.message);
+                    if(data.message === "登录成功!"){
+                        setTimeout(function(){
+                            $("#form").attr("action", "/CloudDemo/html/index.html?phone=" + data.phone);
+                            $("#form").submit();
+                        },500);
+                    }
+
+                }
+            });
+
+
+    }
+</script>
+</body>
+</html>

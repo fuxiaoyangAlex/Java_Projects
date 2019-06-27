@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.niit.clouddemo.dao.AttentionQuestionDao">
+
+    <!-- 添加用户关注的问题 -->
+    <insert id="addAttentionQuestion" parameterType="com.niit.clouddemo.pojo.front.UserAttentionQuestion">
+        INSERT INTO cd_user_attentionquestion(user_id,attention_question_id)
+        VALUES(#{user_id},#{attention_question_id});
+    </insert>
+
+    <!-- 判断是否存在已经关注的逻辑用户和问题 -->
+    <select id="getResultInfo" parameterType="com.niit.clouddemo.pojo.front.UserAttentionQuestion"
+            resultType="com.niit.clouddemo.pojo.front.UserAttentionQuestion">
+        SELECT *
+        FROM cd_user_attentionquestion
+        WHERE user_id = #{user_id} AND attention_question_id = #{attention_question_id}
+
+    </select>
+
+</mapper>
