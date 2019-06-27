@@ -1,4 +1,4 @@
-```
+
 $(function(){
 
     // alert("获取系统所有用户的个数");
@@ -64,4 +64,4 @@ function getUserInfoExcel() {
     $("#form").attr("action", getBaseUrl() + "sys/exportUsers");
     $("#form").submit();
 }
-```
+
