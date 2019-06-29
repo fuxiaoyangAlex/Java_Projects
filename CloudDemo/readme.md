@@ -3,7 +3,7 @@
 ### JavaEE企业级开发应用实训
 
 * **班级：软件1731班**
-* **项目名称：CloudDemo**
+* **项目名称：CloudDemo网络问答系统**
 
 ### CloudDemo项目简介
 
