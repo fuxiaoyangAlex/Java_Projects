@@ -72,4 +72,4 @@
 
 
 * 后台管理员信息展示
-<img src="https://s2.ax1x.com/2019/06/27/Zn44C4.jpg" alt="Zn44C4.jpg" border="0" />
+<img src="https://s2.ax1x.com/2019/06/27/Zn44C4.jpg" alt="Zn44C4.jpg" border="0" /> 
