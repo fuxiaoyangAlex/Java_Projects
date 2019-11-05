@@ -9,7 +9,12 @@
 
 > 南京工业职业技术学院软件1731班第六组实训项目（@2019/06/27） ---大二下学期
 
- 
+ <p align="center">
+    <img src="https://s2.ax1x.com/2019/05/20/EvTutK.png" alt="EvTutK.png" width="30px"  border="0" />
+    <img src="https://img.shields.io/badge/username-wangzhuang2-brightgreen.svg?style=flat&logo=Deno"/>
+    <img src="https://img.shields.io/badge/Developer-Java-red.svg?style=flat&logo=Java"/>
+    <img src="https://img.shields.io/badge/func-life__note-orange.svg?style=flat&logo=Hackaday"/>
+</p>
 <hr/>
 
 <a href="https://imgchr.com/i/VxAiVO"><img src="https://s2.ax1x.com/2019/06/20/VxAiVO.th.png" alt="VxAiVO.png" border="0" width="150px" /></a>
